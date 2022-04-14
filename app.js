@@ -211,17 +211,13 @@ function findSpouse(person, people){
         }
 }
 
+function findSiblings(person,people){ 
+    let results = people.filter(function(el){
+        if(el.id === person.currentSibling) {return true}
+    })
 
 
-
-
-
-
-
-
-
-
-1
+}
 
 
 
