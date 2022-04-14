@@ -192,3 +192,31 @@ function chars(input) {
 
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
+
+function findPersonFamily(person){
+let personsFamily = `Family members name: ${person.parents}\n`;
+personsFamily = `Spouses name: ${person.currentSpouse}\n`;
+
+
+
+
+
+alert(personsFamily)   
+}
+
+function getSpouse(person){
+    personsSpouse = []
+    let firstName = ''
+    let lastName = ''
+    let fullName = firstName + '' + lastName
+   
+    if(person.currentSpouse === null){
+       return 'No Spouse in data.';
+   }
+    else{
+        personsSpouse = person.filter(function(el){
+            
+        }) 
+    }
+
+}
