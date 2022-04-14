@@ -88,6 +88,9 @@ function mainMenu(person, people) {
         case "quit":
             // Stop application execution
             return;
+        case 'test':
+            findSpouse(person[0], people)
+            break
         default:
             // Prompt user again. Another instance of recursion
             return mainMenu(person, people);
@@ -193,30 +196,80 @@ function chars(input) {
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
-function findPersonFamily(person){
-let personsFamily = `Family members name: ${person.parents}\n`;
-personsFamily = `Spouses name: ${person.currentSpouse}\n`;
+function findSpouse(person, people){ 
+    let results = people.filter(function(el){
+        if(el.id === person.currentSpouse) {return true}
+        else {return false}
 
+    })
 
-
-
-
-alert(personsFamily)   
+        if(results.length === 0){
+            alert('You have no spouse')
+        }
+        else {
+            alert(`Spouses Name: ${results[0].firstName} ${results[0].lastName}`)
+        }
 }
 
-function getSpouse(person){
-    personsSpouse = []
-    let firstName = ''
-    let lastName = ''
-    let fullName = firstName + '' + lastName
+
+
+
+
+
+
+
+
+
+
+1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function findPersonFamily(person){
+// let personsFamily = person.filter(function(el){
+//     if (el.firstName.includes
+//     })
+
+
+
+
+
+
+// alert(personsFamily)   
+// }
+// personsFamily = `Spouses name: ${person.currentSpouse}\n`;
+// function getSpouse(person){
+//     personsSpouse = []
+//     let firstName = ''
+//     let lastName = ''
+//     let fullName = firstName + '' + lastName
    
-    if(person.currentSpouse === null){
-       return 'No Spouse in data.';
-   }
-    else{
-        personsSpouse = person.filter(function(el){
+//     if(person.currentSpouse === null){
+//        return 'No Spouse in data.';
+//    }
+//     else{
+//         personsSpouse = person.filter(function(el){
             
-        }) 
-    }
+//         }) 
+//     }
 
-}
+// }
