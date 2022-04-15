@@ -89,7 +89,7 @@ function mainMenu(person, people) {
             // Stop application execution
             return;
         case 'test':
-            findSpouse(person[0], people)
+            findSiblings(person[0], people)
             break
         default:
             // Prompt user again. Another instance of recursion
@@ -213,12 +213,18 @@ function findSpouse(person, people){
 
 function findSiblings(person,people){ 
     let results = people.filter(function(el){
-        if(el.id === person.currentSibling) {return true}
+        if(el.parents.includes(el.id) && person.id) {return true} 
+        else {return false} 
     })
 
-
-}
-
+        if(results.length === 0){
+            alert('there are no siblings')
+        }
+        else {
+            alert(`Siblings Name: ${results[0].firstName} ${results[0].lastName}`)
+        }
+    
+    }
 
 
 
