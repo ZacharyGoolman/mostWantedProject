@@ -42,7 +42,7 @@ function app(people) {
     mainMenu(searchResults, people);
 }
 // End of app()
-
+---------
 /**
  * After finding a single person, we pass in the entire person-object that we found,
  * as well as the entire original dataset of people. We need people in order to find
@@ -89,7 +89,8 @@ function mainMenu(person, people) {
             // Stop application execution
             return;
         case 'test':
-            findSibling(person[0], people)
+            let parentResults = findParents(person[0], people)
+            alert(parentResults)
             break
         default:
             // Prompt user again. Another instance of recursion
@@ -228,20 +229,36 @@ function findSibling(person ,people){
         }
     
     }
+
+// peron we find
+// parents [] can have empty list or 1-2
+
 function findParents(person, people){
-    let results = people.filter(function(el){
-        if(el.id === person.parents)
-    })
-
-    if
-
-
+    let parent_one
+    let parent_two
+    if (person.parents.length === 0) {
+        return('No Parents')
+    } else if (person.parents.length === 1) {
+        for (let i = 0; i < people.length; i++) {
+            if (person.parents[0] === people[i].id) {
+               return(`Parents Names ${people[i].firstName} ${people[i].lastName}`); 
+                // in the next example we want to say parent_one = people[i]
+            }
+        }
+    }
+    // next else if length of parents === 2
+    // for loop with if that is the same as above, then else if should check person.parents[1]
+    // change for current single parent code would be rather than return the single parent we want to save thier value in parent_one variable
+    else if (person.parents.length === 2){
+        for (let i = 0; i < people.length; i++) {
+            if (person.parents[0] === people[i].id) {
+               parent_one = people[i];
+            } else if (person.parents[1] === people[i].id){
+                parent_two = people[i]
+            }
+        } return(`${parent_one.firstName} ${parent_one.lastName} and ${parent_two.firstName} ${parent_two.lastName}`)}
 }
-
-
-
-
-
+    
 
 
 
@@ -263,26 +280,3 @@ function findParents(person, people){
 //     })
 
 
-
-
-
-
-// alert(personsFamily)   
-// }
-// personsFamily = `Spouses name: ${person.currentSpouse}\n`;
-// function getSpouse(person){
-//     personsSpouse = []
-//     let firstName = ''
-//     let lastName = ''
-//     let fullName = firstName + '' + lastName
-   
-//     if(person.currentSpouse === null){
-//        return 'No Spouse in data.';
-//    }
-//     else{
-//         personsSpouse = person.filter(function(el){
-            
-//         }) 
-//     }
-
-// }
