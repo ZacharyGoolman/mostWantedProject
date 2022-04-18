@@ -42,7 +42,7 @@ function app(people) {
     mainMenu(searchResults, people);
 }
 // End of app()
----------
+//---------
 /**
  * After finding a single person, we pass in the entire person-object that we found,
  * as well as the entire original dataset of people. We need people in order to find
