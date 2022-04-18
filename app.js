@@ -31,7 +31,7 @@ function app(people) {
         case "no":
             //! TODO #4: Declare a searchByTraits (multiple traits) function //////////////////////////////////////////
                 //! TODO #4a: Provide option to search for single or multiple //////////////////////////////////////////
-            searchResults = searchByTraits(people);
+            searchResults = searchByTraitsMenu(people);
             break;
         default:
             // Re-initializes the app() if neither case was hit above. This is an instance of recursion.
@@ -87,10 +87,6 @@ function mainMenu(person, people) {
         case "quit":
             // Stop application execution
             return;
-        case 'test':
-            displayDescendants(person[0], people)
-            alert(parentResults)
-            break
         default:
             // Prompt user again. Another instance of recursion
             return mainMenu(person, people);
@@ -232,7 +228,7 @@ function findSibling(person ,people){
 // person we find
 // parents [] can have empty list or 1-2
 
-function findParents(person, people){
+function findPersonFamily(person, people){
     let parent_one
     let parent_two
     if (person.parents.length === 0) {
@@ -302,6 +298,36 @@ function getDescendants(person,people) {
 }   
 
 
+function searchByTraitsMenu(person, people) {
+   
+    let traitOption = prompt(
+        `Found ${person[0].firstName} ${person[0].lastName}. Do you want to know their 'Gender', 'DOB', or 'Height, or Weight, or Occupation' ?\nType the option you want or type 'restart' or 'quit'.`
+    );
+    // Routes our application based on the user's input
+        switch (traitOption){
+            case "Gender":
+                let personGender = searchByGender(person[0]);
+                alert(personInfo);
+                break;
+            // case "DOB"
+            
+
+        }
+}
+
+
+function searchByGender(people){
+
+    let personGender = promptFor("What is the person's Gender that you are searching for EX... male or female", chars)
+    
+    let searchedGender = people.filter(function (person){
+        if (person.gender === personGender) {
+        return true}
+    }) 
+
+    return searchedGender
+
+}
 
 
 
@@ -314,9 +340,8 @@ function getDescendants(person,people) {
 
 
 
-// function findPersonFamily(person){
-// let personsFamily = person.filter(function(el){
-//     if (el.firstName.includes
-//     })
+
+
+
 
 
