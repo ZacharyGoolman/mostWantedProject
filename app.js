@@ -42,7 +42,6 @@ function app(people) {
     mainMenu(searchResults, people);
 }
 // End of app()
----------
 /**
  * After finding a single person, we pass in the entire person-object that we found,
  * as well as the entire original dataset of people. We need people in order to find
@@ -78,7 +77,7 @@ function mainMenu(person, people) {
         case "descendants":
             //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
             // HINT: Review recursion lecture + demo for bonus user story
-            let personDescendants = findPersonDescendants(person[0], people);
+            let personDescendants = displayDescendants(person[0], people);
             alert(personDescendants);
             break;
         case "restart":
@@ -89,7 +88,7 @@ function mainMenu(person, people) {
             // Stop application execution
             return;
         case 'test':
-            let parentResults = findParents(person[0], people)
+            displayDescendants(person[0], people)
             alert(parentResults)
             break
         default:
@@ -230,7 +229,7 @@ function findSibling(person ,people){
     
     }
 
-// peron we find
+// person we find
 // parents [] can have empty list or 1-2
 
 function findParents(person, people){
@@ -258,8 +257,49 @@ function findParents(person, people){
             }
         } return(`${parent_one.firstName} ${parent_one.lastName} and ${parent_two.firstName} ${parent_two.lastName}`)}
 }
-    
 
+function displayDescendants(person,people) {
+    var descendants = findDescendants(person , people)
+
+    if (descendants.length === 0) {
+        descendants = "descendants not in data set"
+    }
+    alert(descendants);
+    app(people);
+}
+
+
+function findDescendants(person, people) {
+    var descendant = getDescendants(person,people) 
+    var descendantsToReturn = ""
+
+    for (var i = 0; i < descendant.length; i++) {
+        descendantsToReturn += descendant[i].firstName + " " + descendant[i].lastName + ". "
+
+        if (i >=0) {
+            var grandChildren = findDescendants(descendant[i], people)
+            descendantsToReturn += grandChildren; 
+        }
+    }
+    return descendantsToReturn; 
+}   
+
+function getDescendants(person,people) {
+
+    var descendants = [];
+
+    descendants = people.filter(function(element) {
+        if (element.parents.length ===0) {
+            return false;
+        }
+        else if (element.parents[0] === person.id || element.parents[1] === person.id){
+            {return true}
+        }
+        
+
+    }) 
+    return descendants 
+}   
 
 
 
