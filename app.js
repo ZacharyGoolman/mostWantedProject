@@ -256,7 +256,6 @@ function findPersonFamily(person, people){
 
 function displayDescendants(person,people) {
     var descendants = findDescendants(person , people)
-    userInput.toLowerCase()
     if (descendants.length === 0) {
         descendants = "descendants not in data set"
     }
